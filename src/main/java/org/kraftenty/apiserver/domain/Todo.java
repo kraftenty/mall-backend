@@ -20,7 +20,7 @@ public class Todo {
     @Column(length = 500, nullable = false)
     private String title;
 
-    private String content;
+    private String writer;
 
     private boolean complete;
 
@@ -28,10 +28,6 @@ public class Todo {
 
     public void changeTitle(String title) {
         this.title = title;
-    }
-
-    public void changeContent(String content) {
-        this.content = content;
     }
 
     public void changeComplete(boolean complete) {

@@ -27,7 +27,7 @@ public class TodoServiceTests {
     public void testRegister() {
         TodoDTO todoDTO = TodoDTO.builder()
                 .title("Title...")
-                .content("Content...")
+                .writer("WriterAAA")
                 .dueDate(LocalDate.now())
                 .build();
 

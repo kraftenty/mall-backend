@@ -1,6 +1,5 @@
 package org.kraftenty.apiserver.dto;
 
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,7 +17,7 @@ public class TodoDTO {
 
     private String title;
 
-    private String content;
+    private String writer;
 
     private boolean complete;
 

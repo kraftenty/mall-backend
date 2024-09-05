@@ -32,13 +32,11 @@ public class TodoRepositoryTests {
         for (int i = 0; i < 100; i++) {
             Todo todo = Todo.builder()
                     .title("Title " + i)
-                    .content("Content..." + i)
                     .dueDate(LocalDate.of(2024,12,31))
+                    .writer("user00")
                     .build();
 
             Todo result = todoRepository.save(todo);
-
-            log.info(result);
         }
 
     }
@@ -59,7 +57,6 @@ public class TodoRepositoryTests {
         Todo todo = result.orElseThrow();
 
         todo.changeTitle("Update Title");
-        todo.changeContent("Updated content");
         todo.changeComplete(true);
 
         todoRepository.save(todo);
@@ -76,9 +73,4 @@ public class TodoRepositoryTests {
 
     }
 
-//    @Test
-//    public void testSearch1() {
-//
-//        todoRepository.search1();
-//    }
 }

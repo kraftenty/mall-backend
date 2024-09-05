@@ -1,4 +1,4 @@
-package org.kraftenty.apiserver.repository;
+package org.kraftenty.apiserver.service;
 
 
 import lombok.RequiredArgsConstructor;
@@ -7,7 +7,7 @@ import org.kraftenty.apiserver.domain.Todo;
 import org.kraftenty.apiserver.dto.PageRequestDTO;
 import org.kraftenty.apiserver.dto.PageResponseDTO;
 import org.kraftenty.apiserver.dto.TodoDTO;
-import org.kraftenty.apiserver.service.TodoService;
+import org.kraftenty.apiserver.repository.TodoRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
@@ -40,11 +40,13 @@ public class TodoServiceImpl implements TodoService {
     @Override
     public void modify(TodoDTO dto) {
         Optional<Todo> result = todoRepository.findById(dto.getTno());
+
         Todo todo = result.orElseThrow();
+
         todo.changeTitle(dto.getTitle());
-        todo.changeContent(dto.getContent());
-        todo.changeComplete(dto.isComplete());
         todo.changeDueDate(dto.getDueDate());
+        todo.changeComplete(dto.isComplete());
+
         todoRepository.save(todo);
     }
 
@@ -66,7 +68,7 @@ public class TodoServiceImpl implements TodoService {
                 PageResponseDTO.<TodoDTO>withAll()
                         .dtoList(dtoList)
                         .pageRequestDTO(pageRequestDTO)
-                        .total(result.getTotalElements())
+                        .totalCount(result.getTotalElements())
                         .build();
 
         return responseDTO;
