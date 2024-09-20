@@ -34,6 +34,9 @@ public class JWTCheckFilter extends OncePerRequestFilter {
         if (path.startsWith("/api/member")) {
             return true;
         }
+        if(path.startsWith("/api/products/view")) { // 이미지 깨짐 방지
+            return true;
+        }
 
         return false;
     }

@@ -34,6 +34,14 @@ public class Member {
         memberRoleList.add(memberRole);
     }
 
+    public void changeNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public void changePw(String pw) {
+        this.pw = pw;
+    }
+
     public void clearRole() {
         memberRoleList.clear();
     }
